@@ -1,0 +1,12 @@
+server:
+  port: 8085
+
+kafka:
+  server: kafka:9092
+  topic: date-time-topic
+
+dbservice:
+  baseurl: http://dbservice:8081
+
+service:
+  name: format-date-time-service
