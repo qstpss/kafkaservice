@@ -3,7 +3,6 @@ package com.example.kafkaservice.services.impl;
 import com.example.kafkaservice.model.ExternalValueDto;
 import com.example.kafkaservice.services.DatabaseClientService;
 import com.example.kafkaservice.services.KafkaService;
-import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
@@ -27,14 +26,20 @@ public class KafkaServiceImpl implements KafkaService {
     @Override
     @KafkaListener(topics = "${kafka.topic}", groupId = "#{T(java.util.UUID).randomUUID().toString()}")
     public void consume(@Payload String message, @Header("payloadType")String payloadType) {
-        System.out.println("Received a value");
+        System.out.println("#########Received a message");
         if (!payloadType.equals(ExternalValueDto.class.getName())){
             // todo when ExternalValueDto will be in lib
         }
-        objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_STRING_AS_NULL_OBJECT, true);
-
+        message = prepareMessage(message);
         ExternalValueDto dto = objectMapper.readValue(message, ExternalValueDto.class);
         dto.setSource(source);
         databaseClientService.sendExternalValue(dto);
+    }
+
+    private String prepareMessage(String message) {
+        return message
+                .replace("\"{", "{")
+                .replace("}\"", "}")
+                .replace("\\", "");
     }
 }

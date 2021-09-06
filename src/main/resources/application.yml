@@ -9,4 +9,4 @@ dbservice:
   baseurl: http://dbservice:8081
 
 service:
-  name: format-date-time-service
+  name: kafka-service
