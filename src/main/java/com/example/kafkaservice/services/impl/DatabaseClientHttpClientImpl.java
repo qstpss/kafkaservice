@@ -1,7 +1,6 @@
 package com.example.kafkaservice.services.impl;
-
-import com.example.kafkaservice.model.ExternalValueDto;
 import com.example.kafkaservice.services.DatabaseClientHttpClient;
+import external.dto.ExternalValueDto;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;

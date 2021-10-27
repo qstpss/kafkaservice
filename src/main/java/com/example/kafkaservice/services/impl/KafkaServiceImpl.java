@@ -1,9 +1,9 @@
 package com.example.kafkaservice.services.impl;
 
-import com.example.kafkaservice.model.ExternalValueDto;
 import com.example.kafkaservice.services.DatabaseClientService;
 import com.example.kafkaservice.services.KafkaService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import external.dto.ExternalValueDto;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Value;

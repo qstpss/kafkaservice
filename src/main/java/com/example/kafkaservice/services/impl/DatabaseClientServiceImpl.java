@@ -1,8 +1,8 @@
 package com.example.kafkaservice.services.impl;
 
-import com.example.kafkaservice.model.ExternalValueDto;
 import com.example.kafkaservice.services.DatabaseClientHttpClient;
 import com.example.kafkaservice.services.DatabaseClientService;
+import external.dto.ExternalValueDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
