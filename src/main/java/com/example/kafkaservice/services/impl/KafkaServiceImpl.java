@@ -28,7 +28,7 @@ public class KafkaServiceImpl implements KafkaService {
     public void consume(@Payload String message, @Header("payloadType")String payloadType) {
         System.out.println("#########Received a message");
         if (!payloadType.equals(ExternalValueDto.class.getName())){
-            // todo when ExternalValueDto will be in lib
+            return;
         }
         message = prepareMessage(message);
         ExternalValueDto dto = objectMapper.readValue(message, ExternalValueDto.class);
